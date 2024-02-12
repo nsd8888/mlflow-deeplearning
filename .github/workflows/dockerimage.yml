@@ -23,6 +23,7 @@ jobs:
 
           - name: create environment
             run: |
+              pip install --upgrade pip
               python -m venv myenv
               source myenv/bin/activate
 
@@ -32,7 +33,12 @@ jobs:
 
           - name: Run the script and generate artifact
             run: |
-              python artifact_download.py --model_uri= ${{ github.event.inputs.model_uri }} --model_version=${{ github.event.inputs.model_version }}
+              python artifact_download.py --model_uri=$model_uri --model_version=$model_version
+            env:
+              model_uri: ${{ github.event.inputs.model_uri }}
+              model_version: ${{ github.event.inputs.model_version }}
+
+              
               
   dockerbuildandpush:
       runs-on: ubuntu-latest
