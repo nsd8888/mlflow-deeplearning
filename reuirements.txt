@@ -1,0 +1,2 @@
+mlflow==2.9.2
+argparse==1.4.0
