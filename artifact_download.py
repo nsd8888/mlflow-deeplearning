@@ -13,5 +13,7 @@ args = par.parse_args()
 MLFLOW_TRACKING_URI = args.MLFLOW_TRACKING_URI
 MLFLOW_TRACKING_USERNAME = args.MLFLOW_TRACKING_USERNAME
 MLFLOW_TRACKING_PASSWORD = args.MLFLOW_TRACKING_PASSWORD
-model_uri = f"models:/$model_uri/$model_version"
+
+
+model_uri = f"models:/{args.model_uri}/{args.model_version}"
 mlflow.artifacts.download_artifacts(dst_path = "artifacts/", artifact_uri = model_uri)
