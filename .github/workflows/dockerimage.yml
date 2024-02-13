@@ -43,9 +43,9 @@ jobs:
             env:
               model_uri: ${{ github.event.inputs.model_uri }}
               model_version: ${{ github.event.inputs.model_version }}
-              MLFLOW_TRACKING_URI: ${MLFLOW_TRACKING_URI}
-              MLFLOW_TRACKING_USERNAME: ${MLFLOW_TRACKING_USERNAME}
-              MLFLOW_TRACKING_PASSWORD: ${MLFLOW_TRACKING_PASSWORD}
+              MLFLOW_TRACKING_URI: $MLFLOW_TRACKING_URI
+              MLFLOW_TRACKING_USERNAME: $MLFLOW_TRACKING_USERNAME
+              MLFLOW_TRACKING_PASSWORD: $MLFLOW_TRACKING_PASSWORD
 
               
               
