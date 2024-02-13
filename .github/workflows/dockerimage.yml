@@ -39,7 +39,7 @@ jobs:
 
           - name: Run the script and generate artifact
             run: |
-              python artifact_download.py --model_uri=$model_uri --model_version=$model_version --MLFLOW_TRACKING_URI=MLFLOW_TRACKING_URI --MLFLOW_TRACKING_USERNAME=MLFLOW_TRACKING_USERNAME --MLFLOW_TRACKING_PASSWORD=MLFLOW_TRACKING_PASSWORD
+              python artifact_download.py --model_uri=$model_uri --model_version=$model_version --MLFLOW_TRACKING_URI=$MLFLOW_TRACKING_URI --MLFLOW_TRACKING_USERNAME=$MLFLOW_TRACKING_USERNAME --MLFLOW_TRACKING_PASSWORD=$MLFLOW_TRACKING_PASSWORD
             env:
               model_uri: ${{ github.event.inputs.model_uri }}
               model_version: ${{ github.event.inputs.model_version }}
