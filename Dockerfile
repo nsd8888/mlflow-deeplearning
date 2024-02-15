@@ -1,7 +1,5 @@
 FROM python:3.11-bullseye
 
-RUN apk update
-RUN apk add build-base cmake
 
 ARG model_uri
 ARG model_version
