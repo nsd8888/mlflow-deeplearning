@@ -21,9 +21,9 @@ ENV MLFLOW_TRACKING_URI = MLFLOW_TRACKING_URIs
 ENV MLFLOW_TRACKING_USERNAME = MLFLOW_TRACKING_USERNAME
 ENV MLFLOW_TRACKING_PASSWORD = MLFLOW_TRACKING_PASSWORD
 
-RUN echo f"models:/{${model_uri}}/{${model_version}}"
-RUN model_uri = f"models:/{${model_uri}}/{${model_version}}"
+RUN echo f"models:/{$model_uri}/{$model_version}"
+RUN model_uri_1 = f"models:/{$model_uri}/{$model_version}"
 RUN pip install -r artifacts/requirements.txt
 
 
-CMD ["python3","app.py","--model_uri = $model_uri","--model_version = $model_version"]
+CMD ["python3","app.py","--model_uri = $model_uri_1","--model_version = $model_version"]
