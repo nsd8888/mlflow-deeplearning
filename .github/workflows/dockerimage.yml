@@ -19,8 +19,13 @@ jobs:
   artifact_downloader:
       runs-on: ubuntu-latest
       steps:
+          
+          
           - name: checkout repository
             uses: actions/checkout@v2
+          
+          - name: printing envs
+            run: echo $MLFLOW_TRACKING_URI
           
           - name: set up python
             uses: actions/setup-python@v5
@@ -72,6 +77,6 @@ jobs:
               build-args: |
                 model_uri=${{ github.event.inputs.model_uri }}
                 model_version=${{ github.event.inputs.model_version }}
-                MLFLOW_TRACKING_URI=$MLFLOW_TRACKING_URI
+                MLFLOW_TRACKING_URI= ${MLFLOW_TRACKING_URI}
                 MLFLOW_TRACKING_USERNAME=$MLFLOW_TRACKING_USERNAME
                 MLFLOW_TRACKING_PASSWORD=$MLFLOW_TRACKING_PASSWORD
