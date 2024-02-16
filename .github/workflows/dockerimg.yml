@@ -22,11 +22,6 @@ jobs:
             - name: checkout repository
               uses: actions/checkout@v2
 
-            - name: download generated artifact
-              uses: actions/download-artifact@v3
-              with:
-                name: model-artifact
-
             - name: setup docker builtx
               uses: docker/setup-buildx-action@v1
 
