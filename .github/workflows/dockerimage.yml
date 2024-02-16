@@ -44,6 +44,12 @@ jobs:
               model_uri: ${{ github.event.inputs.model_uri }}
               model_version: ${{ github.event.inputs.model_version }}
 
+          - name: store generated artifact
+            uses: actions/upload-artifact@v3
+            with:
+              name: model-artifact
+              path: artifacts
+
 
   dockerbuildandpush:
       runs-on: ubuntu-latest
@@ -52,6 +58,11 @@ jobs:
       steps:
           - name: checkout repository
             uses: actions/checkout@v2
+
+          - name: download generated artifact
+            uses: actions/download-artifact@v3
+            with:
+              name: model-artifact
 
           - name: setup docker builtx
             uses: docker/setup-buildx-action@v1
