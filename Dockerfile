@@ -19,8 +19,7 @@ RUN python3 -m venv myvenv
 ENV PATH="/myvenv/bin:$PATH"
 
 RUN pip3 install mlflow
-RUN model_uri = "models:/{str(args.model_uri)}/{str(args.model_version)}"
-RUN mlflow.artifacts.download_artifacts(dst_path = "artifacts/", artifact_uri = model_uri)
+RUN mlflow.artifacts.download_artifacts(dst_path = "artifacts/", artifact_uri = "models:/$model_uri/$model_version")
 
 COPY . .
 RUN pip install -r artifacts/requirements.txt
