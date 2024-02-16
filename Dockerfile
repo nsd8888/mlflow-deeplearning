@@ -8,10 +8,9 @@ ARG MLFLOW_TRACKING_USERNAME
 ARG MLFLOW_TRACKING_PASSWORD
 
 
-RUN echo $MLFLOW_TRACKING_URI $model_uri
-
 WORKDIR /
 COPY . .
+COPY /home/runner/work/mlflow-deeplearning/mlflow-deeplearning .
 RUN pip install --upgrade pip
 RUN python3 -m venv myvenv
 ENV PATH="/myvenv/bin:$PATH"
