@@ -19,7 +19,7 @@ RUN python3 -m venv myvenv
 ENV PATH="/myvenv/bin:$PATH"
 
 RUN pip3 install mlflow
-RUN ls -la model_artifact
+RUN ls -la /model_artifact
 COPY /model_artifact .
 RUN pip install -r ./model_artifact/requirements.txt
 CMD ["python3","app.py","--model_uri = $model_uri","--model_version = $model_version"]
