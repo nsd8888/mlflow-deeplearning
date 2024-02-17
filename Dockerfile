@@ -19,8 +19,7 @@ RUN python3 -m venv myvenv
 ENV PATH="/myvenv/bin:$PATH"
 
 RUN pip3 install mlflow
-RUN mlflow.artifacts.download_artifacts(dst_path = "artifacts/", artifact_uri = "models:/$model_uri/$model_version")
 
-COPY . .
-RUN pip install -r artifacts/requirements.txt
+COPY ./home/runner/work/mlflow-deeplearning/mlflow-deeplearning/. .
+RUN pip install -r ./artifacts/requirements.txt
 CMD ["python3","app.py","--model_uri = $model_uri","--model_version = $model_version"]
