@@ -6,7 +6,6 @@ ARG model_version
 ARG MLFLOW_TRACKING_URI
 ARG MLFLOW_TRACKING_USERNAME
 ARG MLFLOW_TRACKING_PASSWORD
-ARG ART_LOC
 
 ENV MLFLOW_TRACKING_URI = $MLFLOW_TRACKING_URI
 ENV MLFLOW_TRACKING_USERNAME = $MLFLOW_TRACKING_USERNAME
@@ -20,8 +19,7 @@ RUN python3 -m venv myvenv
 ENV PATH="/myvenv/bin:$PATH"
 
 RUN pip3 install mlflow
-
-COPY  ./$ART_LOC/ .
-RUN ls -la mydir
-RUN pip install -r ./artifacts/requirements.txt
+RUN ls -la model_artifact
+COPY /model_artifact .
+RUN pip install -r ./model_artifact/requirements.txt
 CMD ["python3","app.py","--model_uri = $model_uri","--model_version = $model_version"]

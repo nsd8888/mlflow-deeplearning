@@ -63,11 +63,7 @@ jobs:
             uses: actions/download-artifact@v4
             with:
               name: model-artifact
-              path: mydir
-            id: download-step
-
-          - name: Echo artifact location
-            run: echo "artifact location is:${{ steps.download-step.outputs.location }}"
+              path: model_artifact
 
           - name: setup docker builtx
             uses: docker/setup-buildx-action@v1
@@ -91,4 +87,3 @@ jobs:
                 MLFLOW_TRACKING_URI= $MLFLOW_TRACKING_URI
                 MLFLOW_TRACKING_USERNAME=$MLFLOW_TRACKING_USERNAME
                 MLFLOW_TRACKING_PASSWORD=$MLFLOW_TRACKING_PASSWORD
-                ART_LOC=${{ steps.download-step.outputs.location }}
