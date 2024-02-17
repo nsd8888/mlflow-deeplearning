@@ -22,6 +22,6 @@ ENV PATH="/myvenv/bin:$PATH"
 RUN pip3 install mlflow
 
 COPY  ./$ART_LOC/ .
-RUN ls -la
+RUN ls -la mydir
 RUN pip install -r ./artifacts/requirements.txt
 CMD ["python3","app.py","--model_uri = $model_uri","--model_version = $model_version"]
