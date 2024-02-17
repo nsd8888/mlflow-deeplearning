@@ -63,7 +63,7 @@ jobs:
             uses: actions/download-artifact@v4
             with:
               name: model-artifact
-              path: mydir
+              path: model_artifact
 
           - name: setup docker builtx
             uses: docker/setup-buildx-action@v1
