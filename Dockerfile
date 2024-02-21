@@ -18,7 +18,7 @@ RUN pip install --upgrade pip
 RUN python3 -m venv myvenv
 ENV PATH="/myvenv/bin:$PATH"
 COPY . .
-RUN pip3 install mlflow
+RUN pip3 install flask pandas joblib requests argparse
 RUN ls -la /model_artifact
 COPY /model_artifact .
 RUN pip install -r ./model_artifact/requirements.txt

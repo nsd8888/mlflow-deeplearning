@@ -1,11 +1,8 @@
 import json
 from flask import Flask, jsonify, request
-from dotenv import load_dotenv
 import os
 import joblib
-import pickle
 import pandas as pd
-load_dotenv()
 import mlflow
 import numpy as np
 import requests
