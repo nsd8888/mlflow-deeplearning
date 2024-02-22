@@ -13,9 +13,8 @@ ENV MLFLOW_TRACKING_PASSWORD = $MLFLOW_TRACKING_PASSWORD
 
 
 WORKDIR /
-
-RUN pip install --upgrade pip
 RUN python3 -m venv myvenv
+RUN pip install --upgrade pip
 ENV PATH="/myvenv/bin:$PATH"
 COPY . .
 RUN pip3 install flask pandas joblib requests argparse
