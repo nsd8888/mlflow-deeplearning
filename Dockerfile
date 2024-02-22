@@ -22,4 +22,4 @@ RUN pip3 install flask pandas joblib requests argparse
 RUN ls -la /model_artifact
 COPY /model_artifact .
 RUN pip install -r ./model_artifact/requirements.txt
-CMD ["python3","app.py","--model_uri=$model_uri","--model_version=$model_version"]
+CMD python3 app.py --model_uri=$model_uri --model_version=$model_version
