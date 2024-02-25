@@ -20,7 +20,9 @@ COPY . .
 RUN pip3 install mlflow flask pandas joblib requests argparse tensorflow scikit-learn
 RUN python3 artifact_downloader.py --model_version=$model_version --MLFLOW_TRACKING_URI=$MLFLOW_TRACKING_URI
 
-RUN ls -la /artifacts
+
 COPY /artifacts .
+RUN ls -la
+
 RUN pip install -r ./artifacts/requirements.txt
 CMD python3 app.py --model_uri=$model_uri --model_version=$model_version --MLFLOW_TRACKING_URI=$MLFLOW_TRACKING_URI
