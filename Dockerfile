@@ -17,7 +17,7 @@ RUN python3 -m venv myvenv
 RUN pip install --upgrade pip
 ENV PATH="/myvenv/bin:$PATH"
 COPY . .
-RUN pip3 install flask pandas joblib requests argparse scikit-learn
+RUN pip3 install flask pandas joblib requests argparse scikit-learn==1.2.2
 # RUN python3 artifact_downloader.py --model_version=$model_version --MLFLOW_TRACKING_URI=$MLFLOW_TRACKING_URI
 
 RUN ls -la ./artifacts
