@@ -51,5 +51,5 @@ if __name__=="__main__":
     
 
     model_uri=f"models:/{str(args.model_uri)}/{str(args.model_version)}"
-    loaded_model = mlflow.pyfunc.load_model(model_uri=model_uri)
+    loaded_model = mlflow.tensorflow.load_model(model_uri=model_uri)
     app.run(host="0.0.0.0", port=5000, debug=True)
