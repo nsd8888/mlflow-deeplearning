@@ -39,8 +39,10 @@ jobs:
 
             - name: Run the script and generate artifact
               run: |
-                python artifact_download.py --model_uri=${{ github.event.inputs.model_uri }} --model_version=${{ github.event.inputs.model_version }}
+                python artifact_download.py
               env:
+                model_uri: ${{ github.event.inputs.model_uri }}
+                mmodel_version: ${{ github.event.inputs.model_version }}
                 MLFLOW_TRACKING_URI: ${{secrets.MLFLOW_TRACKING_URI}}
                 MLFLOW_TRACKING_USERNAME: ${{ secrets.MLFLOW_TRACKING_USERNAME }}
                 MLFLOW_TRACKING_PASSWORD: ${{ secrets.MLFLOW_TRACKING_PASSWORD }}
@@ -80,8 +82,8 @@ jobs:
               push: true
               tags: nileshdalagade/mlflow_deeplearning:latest
               build-args: |
-                model_uri=${{ github.event.inputs.model_uri }}
-                model_version=${{ github.event.inputs.model_version }}
-                MLFLOW_TRACKING_URI= $MLFLOW_TRACKING_URI
-                MLFLOW_TRACKING_USERNAME=$MLFLOW_TRACKING_USERNAME
-                MLFLOW_TRACKING_PASSWORD=$MLFLOW_TRACKING_PASSWORD
+                model_uri = ${{ github.event.inputs.model_uri }}
+                model_version = ${{ github.event.inputs.model_version }}
+                MLFLOW_TRACKING_URI = $MLFLOW_TRACKING_URI
+                MLFLOW_TRACKING_USERNAME = $MLFLOW_TRACKING_USERNAME
+                MLFLOW_TRACKING_PASSWORD = $MLFLOW_TRACKING_PASSWORD
