@@ -36,20 +36,17 @@ def predict():
 
 
 if __name__=="__main__":
-    from argparse import ArgumentParser
     import os
-    par = ArgumentParser()
-    par.add_argument("--model_uri", type=str)
-    par.add_argument("--model_version", type=int)
-    par.add_argument("--MLFLOW_TRACKING_URI", type=str)
-    par.add_argument("--MLFLOW_TRACKING_USERNAME", type=str)
-    par.add_argument("--MLFLOW_TRACKING_PASSWORD", type=str)
+    model_uri = os.getenv("model_uri")
+    model_version = os.getenv("model_version")
+    MLFLOW_TRACKING_URI = os.getenv("MLFLOW_TRACKING_URI")
+    MLFLOW_TRACKING_USERNAME = os.getenv("MLFLOW_TRACKING_USERNAME")
+    MLFLOW_TRACKING_PASSWORD = os.getenv("MLFLOW_TRACKING_PASSWORD")
 
-    args = par.parse_args()
     
-    mlflow.set_tracking_uri(uri=f"https://{args.MLFLOW_TRACKING_USERNAME}:{args.MLFLOW_TRACKING_PASSWORD}@dagshub.com/{args.MLFLOW_TRACKING_USERNAME}/mlops-mlflow.mlflow")
+    mlflow.set_tracking_uri(uri=f"https://{MLFLOW_TRACKING_USERNAME}:{MLFLOW_TRACKING_PASSWORD}@dagshub.com/{MLFLOW_TRACKING_USERNAME}/mlops-mlflow.mlflow")
     
 
-    model_uri=f"models:/{str(args.model_uri)}/{str(args.model_version)}"
-    loaded_model = mlflow.tensorflow.load_model(model_uri=model_uri)
+    model_uri=f"models:/{str(model_uri)}/{str(model_version)}"
+    loaded_model = mlflow.tensorflow.load_model(model_uri = model_uri)
     app.run(host="0.0.0.0", port=5000, debug=True)

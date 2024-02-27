@@ -7,6 +7,9 @@ ARG MLFLOW_TRACKING_URI
 ARG MLFLOW_TRACKING_USERNAME
 ARG MLFLOW_TRACKING_PASSWORD
 
+
+ENV model_uri = $model_uri
+ENV model_version = $model_version
 ENV MLFLOW_TRACKING_URI = $MLFLOW_TRACKING_URI
 ENV MLFLOW_TRACKING_USERNAME = $MLFLOW_TRACKING_USERNAME
 ENV MLFLOW_TRACKING_PASSWORD = $MLFLOW_TRACKING_PASSWORD
@@ -23,4 +26,4 @@ RUN pip3 install flask pandas joblib requests argparse scikit-learn==1.2.2
 RUN ls -la ./artifacts
 
 RUN pip install -r ./artifacts/requirements.txt
-CMD python3 app.py --model_uri=$model_uri --model_version=$model_version --MLFLOW_TRACKING_URI=$MLFLOW_TRACKING_URI --MLFLOW_TRACKING_USERNAME=$MLFLOW_TRACKING_USERNAME --MLFLOW_TRACKING_PASSWORD=$MLFLOW_TRACKING_PASSWORD
+CMD python3 app.py
